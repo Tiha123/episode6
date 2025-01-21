@@ -39,17 +39,18 @@ public class Random1 : MonoBehaviour
             Debug.Log(result);
         }
     }
+    [SerializeField] int TargetValue;
     [SerializeField] float TargetRate;
     float floor = 0f;
     int trys = 0;
-    float value;
+    int value;
     bool beforefloorhit = false;
     int GoldenLegendary = 0;
 
     [Button]
     void RandomRate()
     {
-        value = Random.value;
+        value = Random.Range(1,10001);
         if (trys < 1000)
         {
             floor += TargetRate;
@@ -120,7 +121,7 @@ public class Random1 : MonoBehaviour
                         trys++;
                         floor = floor-1f;
                         GoldenLegendary++;
-                        Debug.Log($"{trys}번째 시도: {TargetRate}, 천장 {floor}");
+                        Debug.Log($"{trys}번째 시도: {TargetValue}, 천장 {floor}");
                         RandomRate();
                     }
                 }
